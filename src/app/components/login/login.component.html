@@ -1,0 +1,45 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+
+
+<div class="bodey" fxLayout="column" fxLayoutAlign="center center">
+ <div class="wrapper fadeInDown">
+
+  <div  id="formContent">
+    <form [formGroup]="loginForm" (ngSubmit)="signing(loginForm.value)">
+      <div  *ngIf="!isLoggedIn">
+      <input type="text" id="login" class="fadeIn second "  placeholder="name" formControlName="name">
+          <div *ngIf="submitted && f.name.errors" class=" jasmine-alert red-text">
+                <div *ngIf="f.name.errors.required"> required</div>
+         </div>
+
+      <input type="password" id="password" class="fadeIn third "  placeholder="password" formControlName="password">
+         <div *ngIf="submitted && f.password.errors" class=" jasmine-alert red-text">
+                <div *ngIf="f.password.errors.required"> required</div>
+         </div>
+
+      </div>
+      <input type="submit" class="fadeIn fourth" value="Log In">
+      <div class="form-group">
+        <div
+          class="alert alert-danger"
+          role="alert"
+          *ngIf="submitted && isLoginFailed">
+          Login failed: {{ errorMessage }}
+        </div>
+      <div class="alert alert-success" *ngIf="isLoggedIn">
+        Logged in as {{ roles }}.
+      </div>
+      </div>
+    </form>
+
+    <div id="formFooter">
+      <a class="underlineHover" href="#">Forgot Password?</a>
+    </div>
+
+  </div>
+ </div>
+</div>

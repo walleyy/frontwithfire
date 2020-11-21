@@ -1,0 +1,13 @@
+<div *ngIf="currentUser; else loggedOut">
+  <mat-toolbar style="background: #56baed">
+  <button (click)="app.logout()">logout</button>
+  </mat-toolbar>
+  <div >
+    <em>current user {{currentUser.name}}</em>
+    <span style="padding: 5px" >{{identity}}</span>
+  </div>
+</div>
+
+<ng-template #loggedOut>
+  Please login.
+</ng-template>
