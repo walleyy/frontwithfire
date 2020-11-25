@@ -23,7 +23,6 @@ import { JwtModule } from '@auth0/angular-jwt';
 import {authInterceptorProviders} from './services/interceptor.service';
 
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -52,7 +51,7 @@ import {authInterceptorProviders} from './services/interceptor.service';
             return     localStorage.getItem('access_token'); },
         }
       }
-    )
+    ),
   ],
   providers: [UsersService,
              {provide: ErrorHandler, useClass: AppErrorHandler },
