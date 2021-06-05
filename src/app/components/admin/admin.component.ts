@@ -7,6 +7,7 @@ import {AppError} from '../../common/AppError';
 import {NotFoundError} from '../../common/NotFoundError';
 import {BadInputError} from '../../common/BadInputError';
 import {ActivatedRoute} from '@angular/router';
+import {map} from 'rxjs/operators';
 
 export interface PeriodicElement {
   name: string;
@@ -21,6 +22,7 @@ export interface Data {
   title: string;
   body: string;
 }
+
 
 const ELEMENT_DATA: PeriodicElement[] = [
   {
@@ -119,14 +121,14 @@ const ELEMENT_DATA: PeriodicElement[] = [
 
 export class AdminComponent implements  OnInit , OnDestroy{
 
-  constructor(private usersService: UsersService , private route: ActivatedRoute) {}
+  constructor(private usersService: UsersService , private route: ActivatedRoute, ) {}
 
   search = new FormControl('');
   columnsToDisplay = ['name', 'weight', 'symbol', 'position'];
   expandedElement: PeriodicElement | null;
   dataSource = new MatTableDataSource(ELEMENT_DATA);
   posts: any;
-
+info: any;
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(
